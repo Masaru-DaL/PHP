@@ -20,22 +20,24 @@
 <pre>
 <?php
 /* ここに、PHPのプログラムを記述します */
-// print('現在は ' . date('G時 i分 s秒') . ' です');
-// print('現在は ' . date('G i s') . ' です');
-// print('現在は ' . date('s') . ' です');
-// print('現在は ' . date('i s') . ' です');
-// print('現在は ' . date('G i s') . ' です');
-// print(date('G'));
-// print('時');
-// print(date('i'));
-// print('分');
-// print(date('s'));
-// print('秒');
-// print('1+1は' . (1+1) . 'です');
+// $sum = 100 + 1050 + 200;
+// $tax = 1.08;
+// print($sum);
+// print("\n");
+// print($sum * 1.08);
+// print('合計金額は:' . $sum . '円です');
+// print("\n");
+// print('税込金額は:' . $sum * $tax . '円です');
 
-// 練習問題 現在の時刻を表示させろ
-print('今日は' . date(' Y年 n月 j日') . 'です');
+// 練習問題 -> 10と表示させろ
+$sum = 8 + 2;
+print($sum);
 ?>
+<!-- 合計金額は: <?php print($sum); ?>円です<br> -->
+<!-- 税込金額は: <?php print($sum * 1.08); ?>円です -->
+<!-- 税込金額は: <?php print($sum * $tax); ?>円です -->
+
+
 </pre>
 </main>
 </body>
