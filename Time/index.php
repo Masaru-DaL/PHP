@@ -20,7 +20,17 @@
 <pre>
 <?php
 /* ここに、PHPのプログラムを記述します */
-
+// print('現在は ' . date('G時 i分 s秒') . ' です');
+// print('現在は ' . date('G i s') . ' です');
+// print('現在は ' . date('s') . ' です');
+// print('現在は ' . date('i s') . ' です');
+// print('現在は ' . date('G i s') . ' です');
+print(date('G'));
+print('時');
+print(date('i'));
+print('分');
+print(date('s'));
+print('秒');
 ?>
 </pre>
 </main>
