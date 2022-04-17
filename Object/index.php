@@ -20,6 +20,9 @@
 <pre>
 <?php
 /* ここに、PHPのプログラムを記述します */
+$today = new DateTime();
+// print($today->format('G:i:s'));
+print('現在は' . $today->format('G:i:s') . 'です');
 ?>
 </pre>
 </main>
