@@ -25,12 +25,16 @@
 // print('現在は ' . date('s') . ' です');
 // print('現在は ' . date('i s') . ' です');
 // print('現在は ' . date('G i s') . ' です');
-print(date('G'));
-print('時');
-print(date('i'));
-print('分');
-print(date('s'));
-print('秒');
+// print(date('G'));
+// print('時');
+// print(date('i'));
+// print('分');
+// print(date('s'));
+// print('秒');
+// print('1+1は' . (1+1) . 'です');
+
+// 練習問題
+print('今日は' . date(' Y年 n月 j日') . 'です');
 ?>
 </pre>
 </main>
