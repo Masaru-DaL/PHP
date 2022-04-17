@@ -31,6 +31,17 @@
 // 1970年1月1日から数えた秒数が表示される
 // $time = time();
 // print($time);
+
+// strtotimeファンクション = str to time -> 文字列を　タイムスタンプに変換するファンクション
+// 家康の誕生日のタイムスタンプ
+// $ieyasu = strtotime('1543/1/31');
+// print($ieyasu);
+
+// 明後日の日付を表示させる
+$day_after_tomorrow = strtotime('+2day');
+$day = date('n/j(D)', $day_after_tomorrow);
+print($day . "\n");
+
 ?>
 </pre>
 </main>
