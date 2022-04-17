@@ -12,7 +12,7 @@
 </head>
 <body>
 <header>
-<h1 class="font-weight-normal">よくわかるPHPの教科書</h1>
+<h1 class="font-weight-normal">よくわかるPHPの教科書</h1>    
 </header>
 
 <main>
@@ -20,9 +20,8 @@
 <pre>
 <?php
 /* ここに、PHPのプログラムを記述します */
-print('PHPを勉強中です！');
 ?>
 </pre>
 </main>
-</body>
+</body>    
 </html>
