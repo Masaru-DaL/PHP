@@ -38,9 +38,16 @@
 // print($ieyasu);
 
 // 明後日の日付を表示させる
-$day_after_tomorrow = strtotime('+2day');
-$day = date('n/j(D)', $day_after_tomorrow);
-print($day . "\n");
+// $day_after_tomorrow = strtotime('+2day');
+// $day = date('n/j(D)', $day_after_tomorrow);
+// print($day . "\n");
+
+// 1日後から365日後までを表示させる
+for ($i=1; $i <= 365; $i++) {
+    $timestamp = strtotime('+' . $i . 'day');
+    $day = date('n/j(D)', $timestamp);
+    print($day . "\n");
+}
 
 ?>
 </pre>
