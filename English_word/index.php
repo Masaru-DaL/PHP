@@ -35,6 +35,16 @@ foreach ($fruits as $english => $japanese) {
 // foreach ($fruits as $japanese) {
     print ($english . ' : ' . $japanese . "\n");
 }
+
+// 練習問題: 連想配列を表示させよ
+$PC = [
+    'win' => 'Windows',
+    'mac' => 'Macintosh',
+    'iphone' => 'iPhone',
+    'ipad' => 'iPad',
+    'android' => 'Android'
+    ];
+print($PC['win']);
 ?>
 </pre>
 </main>
