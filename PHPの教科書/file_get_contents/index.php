@@ -20,7 +20,12 @@
 <pre>
 <?php
 /* ここに、PHPのプログラムを記述します */
+$doc = file_get_contents('./news_data/news.txt');
+$doc .="<br />2018-06-02 ニュースを追加しました";
+file_put_contents('./news_data/news.txt', $doc);
 
+readfile('./news_data/news.txt');
+print($news);
 ?>
 </pre>
 </main>
