@@ -25,6 +25,9 @@ path=(
    autoload -Uz compinit && compinit
  fi
 
+## suggestionsの色を変更
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
+
 # 空行を追加するようにする
 add_newline() {
   if [[ -z $PS1_NEWLINE_LOGIN ]]; then
