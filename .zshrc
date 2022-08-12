@@ -4,6 +4,8 @@ autoload -Uz colors && colors
 ## tab補完
 autoload -Uz compinit && compinit
 
+export CLICOLOR=1
+
 # pathの追加
 typeset -U path PATH
 path=(
@@ -54,7 +56,7 @@ function left-prompt {
 
   user="${back_color}${name_b}${text_color}${name_t}"
   dir="${back_color}${path_b}${text_color}${path_t}"
-  echo "${user}%m@($(arch))${back_color}${path_b}${text_color}${name_b}${sharp} ${dir}%~${reset}${text_color}${path_b}${sharp}${reset}\n${text_color}${arrow}→ ${reset}"
+  echo "${user}%m@($(arch))${back_color}${path_b}${text_color}${name_b}${sharp} ${dir}%c ${reset}${text_color}${path_b}${sharp}${reset}\n${text_color}${arrow}-> ${reset}"
 }
 
 PROMPT=`left-prompt`
@@ -70,7 +72,8 @@ function rprompt-git-current-branch {
   yellow='227m%}'
   blue='033m%}'
   reset='%{\e[0m%}'   # reset
-
+ 
+  # if [ ! -e  ".git" ]; then
   if [ ! -e  ".git" ]; then
     # git 管理されていないディレクトリは何も返さない
     return
@@ -107,16 +110,8 @@ setopt prompt_subst
 # プロンプトの右側にメソッドの結果を表示させる
 RPROMPT='`rprompt-git-current-branch`'
 
-
-# prompt
-# PROMPT='%F{075}%n%f %F{103}($(arch))%f:%F{220}%~%f $(git_super_status)'
-# PROMPT+=""$'\n'"%# "
-
 # macOS 12 Monterey 以降ではデフォルトパス内に python コマンドが存在しないため、エイリアスを設定しないと git_super_status が機能しません。
 alias python="python3"
-
-# Iceberg
-export CLICOLOR=1
 
 # インストールしたコマンドを即認識させる
 zstyle ":completion:*:commands" rehash 2
@@ -145,23 +140,23 @@ NUM=$(($RANDOM % 100))
 #スライム 40%の確率 (RANGE: 0-39)
 if [ $NUM -lt 40 ]; then
   sed -e 's/^/\t/g' $TEXTDIR/slime.txt
-  [ $PROMPT = "ON" ] &&  prompt "スライム" "\t\t\t" 
+  [ $PROMPT = "ON" ] &&  prompt "スライム" "\t\t\t"
 #ベス 25%の確率 (RANGE: 40-64)
-elif [ $NUM -lt 65 ]; then      
+elif [ $NUM -lt 65 ]; then
   sed -e 's/^/\t/g' $TEXTDIR/slime-beth.txt
-  [ $PROMPT = "ON" ] &&  prompt "スライムベス" "\t\t\t" 
+  [ $PROMPT = "ON" ] &&  prompt "スライムベス" "\t\t\t"
 #バブル 20%の確率 (RANGE: 65-84)
 elif [ $NUM -lt 85 ]; then
   cat $TEXTDIR/bubble-slime.txt
-  [ $PROMPT = "ON" ] &&  prompt "バブルスライム" "\t\t" 
+  [ $PROMPT = "ON" ] &&  prompt "バブルスライム" "\t\t"
 #メタル 10%の確率 (RANGE: 85-94)
 elif [ $NUM -lt 95 ]; then
   sed -e 's/^/\t/g' $TEXTDIR/metal-slime.txt
-  [ $PROMPT = "ON" ] &&  prompt "メタルスライム" "\t\t" 
+  [ $PROMPT = "ON" ] &&  prompt "メタルスライム" "\t\t"
 #はぐれ 4%の確率 (RANGE: 95-98)
 elif [ $NUM -lt 99 ]; then
   cat $TEXTDIR/hagure-metal.txt
-  [ $PROMPT = "ON" ] &&  prompt "はぐれメタル" "\t\t\t" 
+  [ $PROMPT = "ON" ] &&  prompt "はぐれメタル" "\t\t\t"
 #3種盛り 1%の確率 (RANGE: 99)
 elif [ $NUM -eq 99 ]; then
   cat $TEXTDIR/slime-allstar.txt
