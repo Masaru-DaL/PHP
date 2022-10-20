@@ -72,7 +72,7 @@ function rprompt-git-current-branch {
   yellow='227m%}'
   blue='033m%}'
   reset='%{\e[0m%}'   # reset
- 
+
   # if [ ! -e  ".git" ]; then
   if [ ! -e  ".git" ]; then
     # git 管理されていないディレクトリは何も返さない
@@ -171,3 +171,25 @@ export FZF_DEFAULT_OPTS='--height 30% --border'
 
 # 小文字でも大文字ディレクトリ、ファイルを補完できるようにする
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# GoのPATHの追加
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GOBIN=$HOME/go/bin
+
+session_name="sesh"
+
+# 1. First you check if a tmux session exists with a given name.
+tmux has-session -t=$session_name 2> /dev/null
+
+# 2. Create the session if it doesn't exists.
+if [[ $? -ne 0 ]]; then
+  TMUX='' tmux new-session -d -s "$session_name"
+fi
+
+# 3. Attach if outside of tmux, switch if you're in tmux.
+if [[ -z "$TMUX" ]]; then
+  tmux attach -t "$session_name"
+else
+  tmux switch-client -t "$session_name"
+fi
