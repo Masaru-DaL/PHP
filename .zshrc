@@ -1,3 +1,17 @@
+# alias
+## ls
+alias ls="exa -FG"
+alias ll="exa -al"
+## cat
+alias cat="bat"
+
+## cd -> ls(HOMEじゃない場合)
+chpwd() {
+	if [[ $(pwd) != $HOME ]]; then;
+		exa
+	fi
+}
+
 # モジュールの有効化
 ## color
 autoload -Uz colors && colors
@@ -116,25 +130,13 @@ alias python="python3"
 # インストールしたコマンドを即認識させる
 zstyle ":completion:*:commands" rehash 2
 
-# alias
-## ls
-alias ls="ls -FG"
-alias ll="ls -al"
-
-## cd -> ls(HOMEじゃない場合)
-chpwd() {
-	if [[ $(pwd) != $HOME ]]; then;
-		ls
-	fi
-}
-
 # enchancd
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 export TERM=xterm-256color
 
-# #スライム
+#スライム
 TEXTDIR=~/DQ/text
 NUM=$(($RANDOM % 100))
 #スライム 40%の確率 (RANGE: 0-39)
@@ -177,26 +179,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOBIN=$HOME/go/bin
 
+#!/bin/bash
+alias @tmux="tmux new-session \; split-window -h -p 50 \; select-pane -t 1 \; split-window -v -p 30 \; send-keys -t 1 neofetch Enter \; select-pane -t 2 \; clock-mode \; select-pane -t 0"
 
-if [ $SHLVL = 1 ]; then
-    alias tmux="tmux attach || tmux new-session \; source-file ~/dotfiles/.tmux/session"
-fi
-
-#!/bin/zshrc
-
-session_name="sesh"
-
-# 1. First you check if a tmux session exists with a given name.
-tmux has-session -t=$session_name 2> /dev/null
-
-# 2. Create the session if it doesn't exists.
-if [[ $? -ne 0 ]]; then
-  TMUX='' tmux new-session -d -s "$session_name"
-fi
-
-# 3. Attach if outside of tmux, switch if you're in tmux.
-if [[ -z "$TMUX" ]]; then
-  tmux attach -t "$session_name"
-else
-  tmux switch-client -t "$session_name"
-fi
+export TMUX_TMPDIR=/tmp/tmp.tmux
