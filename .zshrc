@@ -35,11 +35,11 @@ path=(
 )
 
 # completions / autosuggestions
- if type brew &>/dev/null; then
-   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-   autoload -Uz compinit && compinit
- fi
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  autoload -Uz compinit && compinit
+fi
 
 ## suggestionsの色を変更
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=180'
@@ -179,7 +179,9 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GOBIN=$HOME/go/bin
 
+# tmux起動コマンド
 #!/bin/bash
-alias @tmux="tmux new-session \; split-window -h -p 50 \; select-pane -t 1 \; split-window -v -p 30 \; send-keys -t 1 neofetch Enter \; select-pane -t 2 \; clock-mode \; select-pane -t 0"
+# alias @tmux="tmux new-session \; split-window -h -p 50 \; select-pane -t 1 \; split-window -v -p 30 \; send-keys -t 1 neofetch Enter \; select-pane -t 2 \; clock-mode \; select-pane -t 0"
 
 export TMUX_TMPDIR=/tmp/tmp.tmux
+export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
