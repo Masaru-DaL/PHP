@@ -1,9 +1,64 @@
-# alias
-## ls
-alias ls="exa -FG"
-alias ll="exa -al"
-## cat
-alias cat="bat"
+# -----------------------------
+# Alias
+# -----------------------------
+alias ls=''
+alias ll='exa -al'
+alias cat='bat'
+
+# git
+alias gb='git branch'
+alias gc='git checkout'
+alias gbd='git branch -D'
+alias ga='git add . && git status'
+alias gp='git pull origin $(git branch --show-current)'
+
+# terraform
+alias tplan='terraform plan'
+alias taaa='terraform apply -auto-approve'
+alias td='terraform destroy'
+
+# -----------------------------
+# Warp
+# -----------------------------
+# 引数にタブの名前を渡す
+newtab() {
+	osascript <<EOF
+	tell application "System Events"
+		# 新しいタブを開く
+    keystroke "t" using command down
+
+		# タブに名前を付ける
+		keystroke "r" using command down
+		delay 0.5
+		keystroke "$1"
+		keystroke return
+
+		# 画面を分割する
+		keystroke "d" using command down
+		delay 0.5
+		keystroke "[" using command down
+		delay 0.5
+		keystroke "d" using {command down, shift down}
+		delay 1
+
+		# 各画面で実行する
+		keystroke "cmatrix"
+		keystroke return
+		delay 0.5
+		keystroke "[" using command down
+		keystroke "sl"
+		keystroke return
+		delay 0.5
+		keystroke "[" using command down
+		keystroke "neofetch"
+		keystroke return
+	end tell
+EOF
+}
+
+# 関数を呼び出す場合
+# newtab "YourTabName"
+
 
 ## cd -> ls(HOMEじゃない場合)
 chpwd() {
@@ -184,4 +239,18 @@ export GOBIN=$HOME/go/bin
 # alias @tmux="tmux new-session \; split-window -h -p 50 \; select-pane -t 1 \; split-window -v -p 30 \; send-keys -t 1 neofetch Enter \; select-pane -t 2 \; clock-mode \; select-pane -t 0"
 
 export TMUX_TMPDIR=/tmp/tmp.tmux
-export WORDCHARS='*?_.[]~-=&;!#$%^(){}<>'
+export WORDCHARS='*?_.[]~-=&;!#$%^(){}<> '
+
+export PATH=$PATH:/usr/local/mysql-8.0.26-macos11-arm64/bin
+export PATH=$PATH:/Users/masaru/.tfenv/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/masaru/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/masaru/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/masaru/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/masaru/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=$PATH:/path/to/google-cloud-sdk/bin
+
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

@@ -1,0 +1,9 @@
+windows:
+  - name: "Split Window"
+    layout: "vsplit"
+    commands:
+      - "echo 'Hello, World!'"
+  - name: "Split Window"
+    layout: "split"
+    commands:
+      - "echo 'Hello, World!'"
